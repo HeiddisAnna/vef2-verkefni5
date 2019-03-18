@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './filters.scss';
+
 
 class Filter extends Component {
     state = {

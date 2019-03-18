@@ -26,13 +26,8 @@ function loadSavedLectures() {
  * @returns {array} Fylki af fyrirlestrum.
  */
 export function getLectureList(filters = []) {
-  /* todo */
   const { lectures } = data;
-
   return lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0);
-
-  //console.log('Búin að filtera', lectures);
-  //return lectures;
 }
 
 /**
@@ -43,7 +38,14 @@ export function getLectureList(filters = []) {
  * @returns {object} Fyrirlestri sem fannst eða null ef engin fannst.
  */
 export function getLecture(slug) {
+
+  console.log('Fer inn í getLecture');
   /* todo */
+  const { lectures } = data;
+  const rightLecture = lectures.filter(item => slug === item.slug);
+
+  console.log(rightLecture[0].content);
+  return rightLecture[0].content;
 }
 
 /**

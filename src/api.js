@@ -27,6 +27,12 @@ function loadSavedLectures() {
  */
 export function getLectureList(filters = []) {
   /* todo */
+  const { lectures } = data;
+
+  return lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0);
+
+  //console.log('Búin að filtera', lectures);
+  //return lectures;
 }
 
 /**

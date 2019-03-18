@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './routes/home/Home';
+import Lecture from './routes/lecture/Lecture';
+import NotFound from './routes/notFound/NotFound';
 
 import './App.scss';
 
@@ -12,13 +15,20 @@ todo:
 - sækja routes
 */
 
-// hafa browser rowder utan um allt, til að gera haft nokkrar síður
+// hafa browser roder utan um allt, til að gera haft nokkrar síður
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Home />
+        <Helmet defaultTitle="Fyrirlestur" titleTemplate="%s - Fyrirlestur"></Helmet>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/:slug" component={Lecture} />
+            <Route component={NotFound} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

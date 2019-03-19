@@ -11,11 +11,17 @@ class Filter extends Component {
     onClickHandler = (type) => (e) => {
       const { active } = this.state;
       const { onFilter } = this.props;
+      const { target } = e;
+
+      target.classList.toggle('filters__filter--active');
+
+      console.log('Type er: ' + type);
 
       if (active.includes(type)) {
-        active.splice(type);
+        active.splice(active.indexOf(type), 1);
+      } else {
+        active.push(type);
       }
-      active.push(type);
       console.log(active);
 
       onFilter(active);

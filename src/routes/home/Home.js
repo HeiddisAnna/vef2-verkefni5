@@ -14,7 +14,6 @@ export default class Home extends Component {
   }
 
   onFilter = (active) => {
-    console.log(active, 'er inni í Home');
     this.setState({ lectures: getLectureList(active) });
   }
 

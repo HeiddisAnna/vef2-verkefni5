@@ -31,13 +31,17 @@ export function loadSavedLectures() {
 export function getLectureList(filters = []) {
   const { lectures } = data;
 
+
+
   const lecturesList = lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0)
+  
   const saved = loadSavedLectures();
   lecturesList.map((lecture) => 
     (saved.indexOf(lecture.slug) >= 0 )?
       lecture.finished = true : lecture.finished = false
   )
   console.log(lecturesList);
+  
   return lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0);
 }
 
@@ -55,11 +59,17 @@ export function getLecture(slug) {
   const { lectures } = data;
   const rightLecture = lectures.find(item => slug === item.slug);
 
+
   const saved = loadSavedLectures();
-  if( saved.indexOf(slug) >= 0 ) {
-    rightLecture.finished = true;
+  if(rightLecture){
+    if( saved.indexOf(slug) >= 0 ) {
+      rightLecture.finished = true;
+    } else {
+      rightLecture.finished = false;
+    }
+    return rightLecture
   } else {
-    rightLecture.finished = false;
+    return null;
   }
   return rightLecture;
 }

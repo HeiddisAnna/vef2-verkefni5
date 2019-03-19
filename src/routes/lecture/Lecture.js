@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { getLecture, toggleLectureFinish, loadSavedLectures } from '../../api';
+import { Route } from 'react-router-dom';
+
 
 import Item from '../../components/item/Item';
 import Header from '../../components/header/Header';
+import NotFound from '../../routes/notFound/NotFound';
 
 export default class Lecture extends Component {
 
@@ -32,11 +35,14 @@ export default class Lecture extends Component {
 
   render() {
     const { lecture } = this.state;
+
+    if(!lecture){
+      return <Route component={NotFound} />
+    }
+
+    const slug = this.props.match.params.slug;
     const { content } = lecture;
     const { finished } = lecture;
-
-    console.log(lecture.title);
-    const slug = this.props.match.params.slug;
 
     return (
       <React.Fragment>

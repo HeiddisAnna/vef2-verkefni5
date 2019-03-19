@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './lecture.scss';
 import './listItem.scss';
+import { finished } from 'stream';
 
 
 class Lecture extends Component {
@@ -10,6 +11,7 @@ class Lecture extends Component {
 
   render() {
     const { lecture } = this.props;
+    const { finished } = lecture;
     return (
       <div className="list__col">
         <Link className= "listItem" to= {`/${lecture.slug}`}>
@@ -21,6 +23,9 @@ class Lecture extends Component {
                 <span className="listItem__category"> {lecture.category} </span>
                 <h1 className="listItem__title"> {lecture.title} </h1>
             </div>
+            {finished ? 
+              <div className="listItem__finished"> ✓ </div> : ''
+            }
           </div>
         </Link>
       </div>

@@ -13,7 +13,7 @@ const LOCALSTORAGE_KEY = 'saved_lectures';
  * Sækir alla vistaða fyrirlestra í localStorage.
  * @returns {array} Fylki af slug fyrir vistaða fyrirlestra.
  */
-function loadSavedLectures() {
+export function loadSavedLectures() {
   const savedJson = localStorage.getItem(LOCALSTORAGE_KEY);
   const saved = JSON.parse(savedJson) || [];
 
@@ -30,6 +30,14 @@ function loadSavedLectures() {
  */
 export function getLectureList(filters = []) {
   const { lectures } = data;
+
+  const lecturesList = lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0)
+  const saved = loadSavedLectures();
+  lecturesList.map((lecture) => 
+    (saved.indexOf(lecture.slug) >= 0 )?
+      lecture.finished = true : lecture.finished = false
+  )
+  console.log(lecturesList);
   return lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0);
 }
 
@@ -45,10 +53,15 @@ export function getLecture(slug) {
   console.log('Fer inn í getLecture');
   /* todo */
   const { lectures } = data;
-  const rightLecture = lectures.filter(item => slug === item.slug);
+  const rightLecture = lectures.find(item => slug === item.slug);
 
-  console.log(rightLecture[0].content);
-  return rightLecture[0].content;
+  const saved = loadSavedLectures();
+  if( saved.indexOf(slug) >= 0 ) {
+    rightLecture.finished = true;
+  } else {
+    rightLecture.finished = false;
+  }
+  return rightLecture;
 }
 
 /**

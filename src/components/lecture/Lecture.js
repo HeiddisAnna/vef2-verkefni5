@@ -9,7 +9,7 @@ class Lecture extends Component {
      // sætkja react devtools extention í chrome !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   render() {
-    const { lecture} = this.props;
+    const { lecture } = this.props;
     return (
       <div className="list__col">
         <Link className= "listItem" to= {`/${lecture.slug}`}>

@@ -7,21 +7,22 @@ import Header from '../../components/header/Header';
 export default class Lecture extends Component {
 
   state = {
-    lecture: getLecture('html-sagan'),
+    lecture: getLecture(this.props.match.params.slug),
   }
 
   render() {
     const { lecture } = this.state;
 
+    console.log(this.props.match.params.slug);
+
     return (
       <React.Fragment>
         <Header category="Vefforritun" title="html-sagan" />
         
-        <div>
-            { lecture.map((item, i) => 
-                <Item key={i} item={item} /> // Þetta er það sem við tiljum gera. Hafa bara link
-            ) }
-            
+        <div className="lecture__col">
+          { lecture.map((item, i) => 
+            <Item key={i} item={item} /> 
+          ) }  
         </div>
       </React.Fragment>
     )

@@ -35,12 +35,12 @@ export default class Lecture extends Component {
     const { content } = lecture;
     const { finished } = lecture;
 
-    console.log(this.props.match.params.slug);
+    console.log(lecture.title);
     const slug = this.props.match.params.slug;
 
     return (
       <React.Fragment>
-        <Header category="Vefforritun" title="html-sagan" />
+        <Header category={lecture.category} title={lecture.title} image={lecture.image} />
         
         <div className="lecture__col">
           { content.map((item, i) => 

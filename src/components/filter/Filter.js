@@ -8,7 +8,6 @@ class Filter extends Component {
         active: [],
     }
 
-
     onClickHandler = (type) => (e) => {
       const { active } = this.state;
       const { onFilter } = this.props;
@@ -24,11 +23,17 @@ class Filter extends Component {
 
   render() {
     return (
-      <div className="Filter">
-        <button onClick={this.onClickHandler('html')}>HTML</button>
-        <button onClick={this.onClickHandler('css')}>CSS</button>
-        <button onClick={this.onClickHandler('javascript')}>JS</button> 
-      </div>
+      <ul className="filters">
+        <li>
+          <button className="filters__filter filters__filter--html" onClick={this.onClickHandler('html')}>HTML</button>
+        </li>
+        <li>
+          <button className="filters__filter filters__filter--css" onClick={this.onClickHandler('css')}>CSS</button>
+        </li>
+        <li>
+          <button className="filters__filter filters__filter--js" onClick={this.onClickHandler('javascript')}>JS</button> 
+        </li>
+      </ul>
     );
   }
 }

@@ -20,10 +20,9 @@ export default class Item extends Component {
         return (
           <div className="item item--text">
             <div className="item__content">
-
-              {/*const texts = item.data.split('\n')*/};
-              { /*console.log(texts)*/};
-
+              {item.data.split('\n').map((text, i) => (
+                <p className="item__text">{text}</p>
+              ))};
               <p className="item__text">{item.data}</p>
             </div>
           </div>
@@ -34,9 +33,9 @@ export default class Item extends Component {
           <div className="item item--list">
             <div className="item__content">
               <ul className="item__ul">
-                {item.data.map((liItem, i) => 
+                {item.data.map((liItem, i) => (
                  <li className="item__li">{liItem}</li> 
-                )}
+                ))}
               </ul>
             </div>
           </div>
@@ -89,10 +88,8 @@ export default class Item extends Component {
     }
   }
 
-
   render() {
     const { item } = this.props;
-
     return (
       <div className="lecture__content" > {this.makeElement(item)}</div> 
     )

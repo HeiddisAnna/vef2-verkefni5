@@ -24,7 +24,7 @@ class Lecture extends Component {
                 <h1 className="listItem__title"> {lecture.title} </h1>
             </div>
             {finished ? 
-              <div className="listItem__finished"> ✓ </div> : ''
+              <p className="listItem__finished"> ✓ </p> : ''
             }
           </div>
         </Link>

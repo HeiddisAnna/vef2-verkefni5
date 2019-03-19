@@ -14,7 +14,10 @@ const LOCALSTORAGE_KEY = 'saved_lectures';
  * @returns {array} Fylki af slug fyrir vistaða fyrirlestra.
  */
 function loadSavedLectures() {
-  /* todo */
+  const savedJson = localStorage.getItem(LOCALSTORAGE_KEY);
+  const saved = JSON.parse(savedJson) || [];
+
+  return saved;
 }
 
 /**
@@ -55,5 +58,15 @@ export function getLecture(slug) {
  * @param {string} slug Slug á fyrirlestri sem klára á.
  */
 export function toggleLectureFinish(slug) {
-  /* todo */
+  const saved = loadSavedLectures();
+
+  const index = saved.indexOf(slug);
+
+  if (index >= 0) {
+    saved.splice(index, 1);
+  } else {
+    saved.push(slug);
+  }
+
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(saved));
 }

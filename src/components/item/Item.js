@@ -20,8 +20,7 @@ export default class Item extends Component {
             <div className="item__content">
               {item.data.split('\n').map((text, i) => (
                 <p key={i} className="item__text">{text}</p>
-              ))};
-              <p className="item__text">{item.data}</p>
+              ))}
             </div>
           </div>
         )

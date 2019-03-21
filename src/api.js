@@ -64,7 +64,6 @@ export function getLecture(slug) {
   } else {
     return null;
   }
-  return rightLecture;
 }
 
 /**

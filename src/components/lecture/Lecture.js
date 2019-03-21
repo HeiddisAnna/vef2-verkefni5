@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './lecture.scss';
 import './listItem.scss';
-import { finished } from 'stream';
-
 
 class Lecture extends Component {
-     // sætkja react devtools extention í chrome !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   render() {
     const { lecture } = this.props;

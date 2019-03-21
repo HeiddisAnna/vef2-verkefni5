@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import './Header.scss';
 
-/* todo taka við mynd */
-
 export default class Header extends React.Component {
 
   static propTypes = {

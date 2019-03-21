@@ -8,15 +8,6 @@ import NotFound from './routes/notFound/NotFound';
 
 import './App.scss';
 
-/*
-todo:
-- setja upp react-helmet = Setur upp réttan titil
-- setja upp react-router = Setja upp síður 
-- sækja routes
-*/
-
-// hafa browser roder utan um allt, til að gera haft nokkrar síður
-
 class App extends Component {
   render() {
     return (

@@ -15,14 +15,11 @@ class Filter extends Component {
 
       target.classList.toggle('filters__filter--active');
 
-      console.log('Type er: ' + type);
-
       if (active.includes(type)) {
         active.splice(active.indexOf(type), 1);
       } else {
         active.push(type);
       }
-      console.log(active);
 
       onFilter(active);
     }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getLecture, toggleLectureFinish, loadSavedLectures } from '../../api';
 import { Route } from 'react-router-dom';
 
-
 import Item from '../../components/item/Item';
 import Header from '../../components/header/Header';
 import NotFound from '../../routes/notFound/NotFound';
@@ -14,7 +13,6 @@ export default class Lecture extends Component {
   }
 
   markFinished = (slug) => (e) => {
-    console.log('Ýtti á að klára fyrirlestur');
     const { target } = e;
     const isFinished = target.classList.contains('lecture__finish--finished');
     if (isFinished) {
@@ -54,8 +52,6 @@ export default class Lecture extends Component {
           ) }  
         </div>
         <footer className="lecture__footer">
-
-          {console.log(finished)};
           {finished? 
             <button onClick={this.markFinished(slug)} className="lecture__finish lecture__finish--finished">✓ Klára fyrirlestur</button>
             :

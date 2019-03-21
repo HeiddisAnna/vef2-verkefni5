@@ -31,8 +31,6 @@ export function loadSavedLectures() {
 export function getLectureList(filters = []) {
   const { lectures } = data;
 
-
-
   const lecturesList = lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0)
   
   const saved = loadSavedLectures();
@@ -40,7 +38,6 @@ export function getLectureList(filters = []) {
     (saved.indexOf(lecture.slug) >= 0 )?
       lecture.finished = true : lecture.finished = false
   )
-  console.log(lecturesList);
   
   return lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0);
 }
@@ -53,12 +50,8 @@ export function getLectureList(filters = []) {
  * @returns {object} Fyrirlestri sem fannst eða null ef engin fannst.
  */
 export function getLecture(slug) {
-
-  console.log('Fer inn í getLecture');
-  /* todo */
   const { lectures } = data;
   const rightLecture = lectures.find(item => slug === item.slug);
-
 
   const saved = loadSavedLectures();
   if(rightLecture){

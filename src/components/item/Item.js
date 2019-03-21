@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Lecture from '../lecture/Lecture';
 
 import './item.scss';
 
@@ -11,36 +10,33 @@ export default class Item extends Component {
         return ( 
           <div className="item item--youtube">
             <div className="item__content">
-              <iframe className="item__iframe" src= {`${item.data}`}></iframe>
+              <iframe className="item__iframe" src= {`${item.data}`} title={item.type}></iframe>
             </div>
           </div>
         )
-        break;
       case 'text':
         return (
           <div className="item item--text">
             <div className="item__content">
               {item.data.split('\n').map((text, i) => (
-                <p className="item__text">{text}</p>
+                <p key={i} className="item__text">{text}</p>
               ))};
               <p className="item__text">{item.data}</p>
             </div>
           </div>
         )
-        break;
       case 'list':
         return (
           <div className="item item--list">
             <div className="item__content">
               <ul className="item__ul">
                 {item.data.map((liItem, i) => (
-                 <li className="item__li">{liItem}</li> 
+                 <li key={i} className="item__li">{liItem}</li> 
                 ))}
               </ul>
             </div>
           </div>
         )
-        break;
       case 'heading':
         return (
           <div className="item item--heading">
@@ -49,7 +45,6 @@ export default class Item extends Component {
             </div>
           </div>
         )
-        break;
       case 'code':
         return (
           <div className="item item--code">
@@ -58,7 +53,6 @@ export default class Item extends Component {
             </div>
           </div>
         )
-        break;
       case 'quote':
         return (
           <div className="item item--blockquote">
@@ -70,7 +64,6 @@ export default class Item extends Component {
             </div>
           </div>
         )
-        break;
       case 'image':
         return (
           <div className="item item--image">
@@ -82,7 +75,6 @@ export default class Item extends Component {
             </div>
           </div>
         )
-        break;
       default:
         return (<div>item.data</div>)
     }

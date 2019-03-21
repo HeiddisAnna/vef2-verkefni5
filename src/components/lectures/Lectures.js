@@ -6,7 +6,6 @@ import './list.scss';
 
 
 class Lectures extends Component {
-     // sætkja react devtools extention í chrome !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   render() {
     const { lectures } = this.props;
@@ -14,7 +13,7 @@ class Lectures extends Component {
       <div className="list">
         <div className="list__row">
           { lectures.map((lecture, i) => 
-            <Lecture key={i} lecture={lecture} /> // Þetta er það sem við tiljum gera. Hafa bara link
+            <Lecture key={i} lecture={lecture} /> 
           ) }
         </div>
       </div>
